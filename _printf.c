@@ -12,6 +12,7 @@ int _printf(const char *format, ...)
 {
 	va_list ap;
 	int i = 0, j;
+	int k = 0;
 
 	print_type spec[] = {
 			{"%c", pchar},
@@ -22,20 +23,31 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 
-	while (format && format[i])
+while (format && format[i] != '\0')
+{
+	if (format[i] == '%')
 	{
+		i++;
+
 		j = 0;
 		while (spec[j].spec)
 		{
 			if (format[i] == spec[j].spec[1])
 			{
 				spec[j].f(ap);
+				k++;
+				break;
 			}
 			j++;
 		}
+	}
+	else
+		{
+		_putchar(format[i]);
+		k++;
+		}
 		i++;
 	}
-	_putchar('\n');
 	va_end(ap);
-	return (0);
+	return (k);
 }
