@@ -15,4 +15,5 @@ int _printf(const char *format, ...);
 void pchar(va_list ap);
 void pstring(va_list ap);
 void pmodulo(va_list ap);
+void pdecimal(va_list ap);
 #endif
