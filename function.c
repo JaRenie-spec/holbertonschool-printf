@@ -4,6 +4,7 @@
 /**
  * pchar - function to print a character
  * @ap: argument pointer
+ * Return: 1 if success
  */
 
 int pchar(va_list ap)
@@ -16,17 +17,30 @@ int pchar(va_list ap)
 /**
  * pstring - function to print a string
  * @ap: argument pointer
+ * Return: 1 if success
  */
 
 int pstring(va_list ap)
 {
-	int i = 0;
 	char *str = va_arg(ap, char *);
+	int i;
+	int k = 0;
 
+	if (str == NULL)
+		return (0);
 	for (i = 0; str[i] != '\0'; i++)
-		_putchar(str[i]);
-	return (1);
+	{
+		k += _putchar(str[i]);
+	}
+	return (k);
 }
+
+/**
+ * pmodulo - print the modulo
+ *
+ * @ap: argument pointer
+ * Return: 1 if success
+ */
 
 int pmodulo(va_list ap)
 {
@@ -34,6 +48,12 @@ int pmodulo(va_list ap)
 	_putchar('%');
 	return (1);
 }
+
+/**
+ * pdecimal - print decimal and integer
+ * @ap: argument pointer
+ * Return: 1 if success
+ */
 
 int pdecimal(va_list ap)
 {
@@ -62,5 +82,5 @@ int pdecimal(va_list ap)
 		_putchar(buffer[j]);
 	}
 
-	return (1);
+	return (0);
 }

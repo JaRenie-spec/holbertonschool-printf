@@ -11,52 +11,40 @@
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int i = 0, j;
+	int i = 0;
 	int k = 0;
-
-	print_type spec[] = {
-		{"%c", pchar},
-		{"%s", pstring},
-		{"%", pmodulo},
-		{"%d", pdecimal},
-		{"%i", pdecimal},
-		{NULL, NULL},
-	};
+	int (*func)(va_list);
 
 	va_start(ap, format);
 
-	while (format && format[i] != '\0')
+if (format == NULL)
+{
+	return (-1);
+}
+while (format[i] != '\0')
+{
+	if (format[i] == '%' && format[i + 1] != '\0')
 	{
-		if (format[i] == '%')
+		func = get_op_func((char *)&format[i]);
+
+		if (func != NULL)
 		{
+			k += func(ap);
 			i++;
-			if (format[i] == '%')
-			{
-				_putchar('%');
-				k++;
-			}
-			else
-			{
-				j = 0;
-				while (spec[j].spec)
-				{
-					if (format[i] == spec[j].spec[1])
-					{
-						spec[j].f(ap);
-						k++;
-						break;
-					}
-					j++;
-				}
-			}
 		}
 		else
 		{
 			_putchar(format[i]);
 			k++;
 		}
-		i++;
 	}
-	va_end(ap);
-	return (k);
+	else
+	{
+		_putchar(format[i]);
+		k++;
+	}
+	i++;
+}
+va_end(ap);
+return (k);
 }

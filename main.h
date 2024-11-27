@@ -10,6 +10,7 @@ typedef struct type
 	int (*f)(va_list ap);
 }print_type;
 
+int (*get_op_func(char *format))(va_list);
 int _putchar(char c);
 int _printf(const char *format, ...);
 int pchar(va_list ap);
