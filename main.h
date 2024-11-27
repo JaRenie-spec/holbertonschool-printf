@@ -7,13 +7,13 @@
 typedef struct type
 {
 	char *spec;
-	void (*f)(va_list ap);
+	int (*f)(va_list ap);
 }print_type;
 
 int _putchar(char c);
 int _printf(const char *format, ...);
-void pchar(va_list ap);
-void pstring(va_list ap);
-void pmodulo(va_list ap);
-void pdecimal(va_list ap);
+int pchar(va_list ap);
+int pstring(va_list ap);
+int pmodulo(va_list ap);
+int pdecimal(va_list ap);
 #endif

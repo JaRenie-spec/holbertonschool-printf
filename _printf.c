@@ -15,39 +15,44 @@ int _printf(const char *format, ...)
 	int k = 0;
 
 	print_type spec[] = {
-			{"%c", pchar},
-			{"%s", pstring},
-			{"%", pmodulo},
-			{"%d", pdecimal},
-			{NULL, NULL},
+		{"%c", pchar},
+		{"%s", pstring},
+		{"%", pmodulo},
+		{"%d", pdecimal},
+		{NULL, NULL},
 	};
 
 	va_start(ap, format);
 
-while (format && format[i] != '\0')
-{
-	if (format[i] == '%')
+	while (format && format[i] != '\0')
 	{
-		i++;
 		if (format[i] == '%')
-			_putchar(37);
-
-		j = 0;
-		while (spec[j].spec)
 		{
-			if (format[i] == spec[j].spec[1])
+			i++;
+			if (format[i] == '%')
 			{
-				spec[j].f(ap);
+				_putchar('%');
 				k++;
-				break;
 			}
-			j++;
+			else
+			{
+				j = 0;
+				while (spec[j].spec)
+				{
+					if (format[i] == spec[j].spec[1])
+					{
+						spec[j].f(ap);
+						k++;
+						break;
+					}
+					j++;
+				}
+			}
 		}
-	}
-	else
+		else
 		{
-		_putchar(format[i]);
-		k++;
+			_putchar(format[i]);
+			k++;
 		}
 		i++;
 	}
