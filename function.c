@@ -26,15 +26,40 @@ void pstring(va_list ap)
 		_putchar(str[i]);
 }
 
-/**
- * pmodulo - function to ignore a modulo if write twice
- * @ap: argument pointer.
- */
-
 void pmodulo(va_list ap)
 {
-	int i = 0;
+	(void) ap;
+	_putchar('%');
+}
 
-	if (i == 37)
-		_putchar('%');
+void pdecimal(va_list ap)
+{
+	int n = va_arg(ap, int);
+	int j = 0;
+
+	if (n < 0)
+	{
+		_putchar('-');
+		n = -n;
+	}
+	if (n == 0)
+	{
+		_putchar('0');
+	}
+	else
+	{
+		char buffer[10];
+
+		while (n > 0)
+		{
+			buffer[n] = (n % 10) + '0';
+			n++;
+			n /= 10;
+		}
+		for (j = n - 1; j >= 0; j--)
+		{
+			_putchar(buffer[j]);
+		}
+	}
+
 }
