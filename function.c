@@ -6,10 +6,11 @@
  * @ap: argument pointer
  */
 
-void pchar(va_list ap)
+int pchar(va_list ap)
 {
 	char c = va_arg(ap, int);
 		_putchar(c);
+		return (1);
 }
 
 /**
@@ -17,25 +18,28 @@ void pchar(va_list ap)
  * @ap: argument pointer
  */
 
-void pstring(va_list ap)
+int pstring(va_list ap)
 {
 	int i = 0;
 	char *str = va_arg(ap, char *);
 
 	for (i = 0; str[i] != '\0'; i++)
 		_putchar(str[i]);
+	return (1);
 }
 
-void pmodulo(va_list ap)
+int pmodulo(va_list ap)
 {
 	(void) ap;
 	_putchar('%');
+	return (1);
 }
 
-void pdecimal(va_list ap)
+int pdecimal(va_list ap)
 {
 	int n = va_arg(ap, int);
 	int j = 0;
+	char buffer[10];
 
 	if (n < 0)
 	{
@@ -45,21 +49,18 @@ void pdecimal(va_list ap)
 	if (n == 0)
 	{
 		_putchar('0');
+		return (1);
 	}
-	else
+	while (n > 0)
 	{
-		char buffer[10];
-
-		while (n > 0)
-		{
-			buffer[n] = (n % 10) + '0';
-			n++;
-			n /= 10;
-		}
-		for (j = n - 1; j >= 0; j--)
-		{
-			_putchar(buffer[j]);
-		}
+		buffer[j] = (n % 10) + '0';
+		j++;
+		n /= 10;
+	}
+	for (j = j - 1; j >= 0; j--)
+	{
+		_putchar(buffer[j]);
 	}
 
+	return (1);
 }
