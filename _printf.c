@@ -18,6 +18,7 @@ int _printf(const char *format, ...)
 			{"%c", pchar},
 			{"%s", pstring},
 			{"%", pmodulo},
+			{"%d", pdecimal},
 			{NULL, NULL},
 	};
 
@@ -28,6 +29,8 @@ while (format && format[i] != '\0')
 	if (format[i] == '%')
 	{
 		i++;
+		if (format[i] == '%')
+			_putchar(37);
 
 		j = 0;
 		while (spec[j].spec)
