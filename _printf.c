@@ -19,6 +19,7 @@ int _printf(const char *format, ...)
 		{"%s", pstring},
 		{"%", pmodulo},
 		{"%d", pdecimal},
+		{"%i", pdecimal},
 		{NULL, NULL},
 	};
 
