@@ -1,0 +1,119 @@
+name
+printf
+synopsis
+#ifndef _GUARD_H
+#define _GUARD_H
+#include <stdarg.h>
+#include <stddef.h>
+
+
+typedef struct type
+{
+	char *spec;
+	int (*f)(va_list ap);
+}print_type;
+
+int _putchar(char c);
+int _printf(const char *format, ...);
+int pchar(va_list ap);
+int pstring(va_list ap);
+int pmodulo(va_list ap);
+int pdecimal(va_list ap);
+#endif
+description
+la fonction printf que nous avons réalisé correspond aux exigences des
+consignes données pour cet exercice.
+elle a été créer dans le but de renvoyer :
+un charactère seul (pchar), une chaine de caracteres (pstring), les pourcentages
+(pmodulo) et les decimales (pdecimal).
+elles ecrivent leurs sorties dans la chaine de caractere k, de format int.
+l'ensemble de ces fonctions utilisent un tableau composé de specificateurs
+et de fonctions. de part sa nature de fonction type variadic nous utilisons les
+macros va_list, va_arg.
+valeur renvoyée
+en cas de succés, ces fonctions renvoient le nombre de caracteres affiches sans
+compter l'octet nul final utilisé pour terminer les sorties dans les chaines.
+chaine de format
+Le format de conversion est indiqué par une chaîne de caractères,
+commençant et se terminant dans son état de décalage initial.
+La chaîne de format est composée d'indicateurs :
+les caractères ordinaires (différents de %), qui sont copiés
+sans modification sur la sortie, et les spécifications de conversion,
+qui sont mises en correspondance avec les arguments suivants.
+Les spécifications de conversion sont introduites par le caractère %,
+et se terminent par un indicateur de conversion.
+
+options
+nous parlerons ici d'indicateur de conversion
+Un caractère indique le type de conversion à apporter.
+Les indicateurs de conversion, et leurs significations sont :
+
+d, i
+L'argument int est converti en un chiffre décimal signé. La précision,
+si elle est mentionnée, correspond au nombre minimal de chiffres
+qui doivent apparaître. Si la conversion fournit moins de chiffres,
+le résultat est rempli à gauche avec des zéros.
+Par défaut la précision vaut 1. Lorsque 0 est converti avec une précision
+valant 0, la sortie est vide.
+
+c
+S'il n'y a pas de modificateur l, l'argument entier, de type int, est converti
+en un unsigned char, et le caractère correspondant est affiché.
+Si un modificateur l est présent, l'argument de type wint_t (caractère large)
+est converti en séquence multioctet par un appel à wcrtomb(3), avec un état
+de conversion débutant dans l'état initial. La chaîne multioctet résultante
+est écrite.
+
+s
+S'il n'y a pas de modificateur l, l'argument de type const char * est
+supposé être un pointeur sur un tableau de caractères
+(pointeur sur une chaîne). Les caractères du tableau sont écrits jusqu'à l'octet
+nul (« \0 ») final, non compris. Si une précision est indiquée,
+seul ce nombre de caractères sont écrits. Si une précision est fournie,
+il n'y a pas besoin de caractère nul. Si la précision n'est pas donnée,
+ou si elle est supérieure à la longueur de la chaîne, le caractère nul final
+est nécessaire. Si un modificateur l est présent, l'argument de type const
+wchar_t * est supposé être un pointeur sur un tableau de caractères larges.
+Les caractères larges du tableau sont convertis en une séquence de caractères
+multioctet (chacun par un appel de wcrtomb(3), avec un état de conversion dans
+l'état initial avant le premier caractère large), ceci jusqu'au caractère
+large nul final compris. Les caractères multioctet résultants sont écris
+jusqu'à l'octet nul final (non compris). Si une précision est fournie,
+il n'y a pas plus d'octets écrits que la précision indiquée, mais aucun
+caractère multioctet n'est écrit partiellement. Remarquez que la précision
+concerne le nombre d'octets écrits, et non pas le nombre de caractères larges
+ou de positions d'écrans. La chaîne doit contenir un caractère large nul final,
+sauf si une précision est indiquée, suffisamment petite pour que le nombre
+d'octets écrits la remplisse avant la fin de la chaîne.
+
+%
+Un caractère « % » est écrit. Il n'y a pas de conversion.
+L'indicateur complet est « %% ».
+
+examples
+utilisation de la fonction pour imprimer un caractere
+int pchar(va_list ap);
+
+_printf("Character:[%c]\n", 'H');
+retour
+
+Character:[H]
+
+utilisation de la fonction pour imprimer une chaine de caractere
+int pstring(va_list ap);
+
+_printf("String:[%s]\n", "I am a string !");
+
+retour
+String:[I am a string !]
+
+utilisations de ces deux fonctions pour imprimer des decimales.
+int pmodulo(va_list ap);
+int pdecimal(va_list ap);
+
+_printf("Length:[%d, %i]\n", len, len);
+
+retour
+Length:[39, 39]
+
+author jean-alain reni et blandine soileux
