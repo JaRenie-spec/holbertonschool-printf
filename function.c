@@ -57,30 +57,32 @@ int pmodulo(va_list ap)
 
 int pdecimal(va_list ap)
 {
-	int n = va_arg(ap, int);
-	int j = 0;
-	char buffer[10];
+int num = va_arg(ap, int);
+	int buffer[12];
+	int count = 0, i = 0, j;
 
-	if (n < 0)
+	if (num < 0)
 	{
 		_putchar('-');
-		n = -n;
-	}
-	if (n == 0)
-	{
-		_putchar('0');
-		return (1);
-	}
-	while (n > 0)
-	{
-		buffer[j] = (n % 10) + '0';
-		j++;
-		n /= 10;
-	}
-	for (j = j - 1; j >= 0; j--)
-	{
-		_putchar(buffer[j]);
+		num = -num;
+		count++;
 	}
 
-	return (0);
+	while (num > 0)
+	{
+		buffer[i++] = num % 10;
+		num /= 10;
+	}
+
+	if (i == 0)
+	{
+		buffer[i++] = 0;
+	}
+
+	for (j = i - 1; j >= 0; j--)
+	{
+		_putchar('0' + buffer[j]);
+		count++;
+	}
+	return (count);
 }
