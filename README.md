@@ -4,38 +4,39 @@
 
 
 ## PRINTF PROJECT
-## BY jEAN-ALAIN AND BLANDINE
+## BY JEAN-ALAIN AND BLANDINE
 
 
 
 
-_printf() in the C programming language
+# _printf() in the C programming language
 This project involves recreating the printf function in the C library. The printf function sends formatted output to stdout (standard output stream) by formatting the argument(s) passed and converting the argument(s) to a string. This version will be used as _printf.
 
 
 
-Environment
+# Environment
 Our printf was tested on Ubuntu 22.04 Tests carried out under ElementaryOS 5.1 and VirtualBox on Ubuntu via Vagrant(1.9.1)
 
 
-Distribution of the repository
+# Distribution of the repository
 Once cloned, the repository will contain the following files:
 
 
 
-FILE		 DESCRIPTION
-main.h 		 header file with prototypes
-function.c	 contains functions for writing to the buffer memory
-get_op_func.c	 contains the array of specifiers and their associated functions
-_print.c	 contains the printf function
+|FILE		    |DESCRIPTION                                                    |
+|:-:            |:-:
+|main.h         |header file with prototypes                                     |
+|function.c	    | contains functions for writing to the buffer memory            |
+|get_op_func.c	| contains the array of specifiers and their associated functions|
+|_print.c	    | contains the printf function                                   |
 
 
-specifier output
-c characters
-s character string
-% character percent
-d or i int in signed decimal
-
+|specifier |output|
+|:-:       |:-:   
+|c |characters|
+|s |character string|
+|% |character percent|
+|d or i |int in signed decimal|
 
 ## FLOWCHART
 
@@ -43,7 +44,7 @@ d or i int in signed decimal
 
 ## Exemple
 
-#### main file
+#### main fil|e
 ```c
 #include  "main.h"
 
@@ -61,12 +62,6 @@ return (0);
 ```sh
 Hello,  World
 ```
-
-## How to download it
-
-- You can go on the repository in Github and click on the green button and copy the link or download the zip :
-
-![Clone Repository](https://i.imgur.com/XEOAhWQ.png)
 
 Or you can use this commandline directly in your terminal:
 
@@ -156,111 +151,3 @@ user@ubuntu:~/holbertonschool-printf/printf$  **man  ./man_3_printf**
 
 *  **Jean-Alain RENIE**  _alias_ https://github.com/JaRenie-spec
 *  **Blandine SOILEUX**  _alias_ https://github.com/sira-djam
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-specifier output
-c characters
-s character string
-d or i int in signed decimal
-
-
-
-PRINTF PROJECT
-BY jEAN-ALAIN AND BLANDINE
-
-
-_printf() in the C programming language
-This project involves recreating the printf function in the C library. The printf function sends formatted output to stdout (standard output stream) by formatting the argument(s) passed and converting the argument(s) to a string. This version will be used as _printf.
-
-
-Environment
-Our printf was tested on Ubuntu 20.04 Tests carried out under ElementaryOS 5.1 and VirtualBox on Ubuntu via Vagrant(1.9.1)
-
-
-Distribution of the repository
-Once cloned, the repository will contain the following files:
-
-
-File description
-main.h header file with prototypes
-function.c contains functions for writing to the buffer memory
-get_op_func.c contains the array of specifiers and their associated functions
-_print.c contains the printf function
-
-
-specifier output
-c characters
-s character string
-d or i int in signed decimal
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
