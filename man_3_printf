@@ -39,23 +39,23 @@ Prints signed decimal integer.
 .TP
 #include "main.h"
 .TP
-_printf("Character:[%c]\n", 'H');
+_printf("Character:[%c]", 'H');
 .TP
 Output: character: H
 .TP
-_printf("String:[%s]\n", "Let's try to printf a simple sentence");
+_printf("String:[%s]", "Let's try to printf a simple sentence");
 .TP
  Output: string: Let's try to printf a simple sentence
 .TP
-_printf("Percent:[%%]\n");
+_printf("Percent:[%%]");
 .TP
 Output: percent: %
 .TP
-_printf("decimal: %d\n", 100);
+_printf("decimal: %d", 100);
 .TP
 Output: decimal: 100
 .TP
-_printf("integer: %i\n", 10);
+_printf("integer: %i", 10);
 .TP
 Output: integer: 10
 .TP
