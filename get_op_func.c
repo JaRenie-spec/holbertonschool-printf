@@ -13,7 +13,7 @@ int (*get_op_func(char *format))(va_list)
 	print_type spec[] = {
 		{"%c", pchar},
 		{"%s", pstring},
-		{"%", pmodulo},
+		{"%%", pmodulo},
 		{"%d", pdecimal},
 		{"%i", pdecimal},
 		{NULL, NULL},

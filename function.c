@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stdio.h>
 
 /**
  * pchar - function to print a character
@@ -58,7 +59,7 @@ int pmodulo(va_list ap)
 int pdecimal(va_list ap)
 {
 int num = va_arg(ap, int);
-	int buffer[12];
+	int buffer[11];
 	int count = 0, i = 0, j;
 
 	if (num < 0)
