@@ -4,8 +4,9 @@
 #include <string.h>
 
 /**
- * @brief
- *
+ * get_op_func - function to search the specifier.
+ * @format: the argument to print
+ * Return: the pointer of function
  */
 
 int (*get_op_func(char *format))(va_list)
